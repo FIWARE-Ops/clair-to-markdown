@@ -1,0 +1,26 @@
+name: 'Clair to markdown'
+description: 'Translate clair-json-reports to markdown.'
+author: stefan.wiedemann@fiware.org
+branding:
+  icon: 'tag'
+  color: 'green'
+inputs:
+  reportFile: 
+    description: Path to the clair-json-report inside the contaienr.
+    required: false
+    default: "/github/workspace/report.json"
+  markdownFile:
+    description: Path to the generated markdown inside the contaienr.
+    required: false
+    default: "/github/workspace/report.md"
+  mustacheTemplate:
+    description: Path to an alternative mustache template for generating reports
+    required: false
+    default: "./report.md.mustache"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    REPORT_FILE: ${{ inputs.reportFile }}
+    MARKDOWN_FILE: ${{ inputs.markdownFile }}
+    MUSTACHE_TEMPLATE: ${{ inputs.mustacheTemplate }}
