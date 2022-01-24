@@ -16,7 +16,7 @@ inputs:
   mustacheTemplate:
     description: Path to an alternative mustache template for generating reports
     required: false
-    default: "./report.md.mustache"
+    default: "/template/report.md.mustache"
 runs:
   using: 'docker'
   image: 'Dockerfile'
